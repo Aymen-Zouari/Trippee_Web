@@ -1,0 +1,111 @@
+{% extends 'indexChauffeur.html.twig' %}
+
+
+{% block body %}
+	<br>
+	<br>
+	<br>
+	<main
+		id="main">
+
+		<!-- ======= Portfolio Details Section ======= -->
+		<section id="portfolio-details" class="portfolio-details">
+			<div class="container">
+
+				<div class="row gy-4">
+
+					<div class="col-lg-8">
+						<div class="portfolio-details-slider swiper">
+							<div class="swiper-wrapper align-items-center">
+
+								<div class="swiper-slide">
+									<img src="{{ asset('uploads/' ~ co_voiturage.covImg) }}" style="max-height: 400px">
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="portfolio-info">
+							<h3>Car information</h3>
+							<ul>
+								<li>
+									<strong>id</strong>:
+									{{ co_voiturage.id}}</li>
+								<br>
+								<br>
+								<li>
+									<strong>departure</strong>:
+									{{  co_voiturage.depart }}
+									&nbsp&nbsp <strong>Temperature:</strong>
+									{{ co_voiturage.weather_temp(co_voiturage.depart)  }} °C</li>
+
+								<br>
+								<br>
+								<li>
+									<strong>Destination</strong>:
+									{{  co_voiturage.destination }}
+									&nbsp&nbsp <strong>Temperature:</strong>
+									{{ co_voiturage.weather_temp(co_voiturage.destination)  }} °C</li>
+								<br>
+								<br>
+								<li>
+									<strong>Departure day and time
+									</strong>:
+									{{ co_voiturage.dateDep ? co_voiturage.dateDep|date('Y-m-d') : '' }}</li>
+								<br>
+								<br>
+								<li>
+									<strong>Nombre of seats
+									</strong>:
+									{{ co_voiturage.nmbrPlace }}</li>
+								<br>
+								<br>
+
+
+								<center>
+									<table border="0">
+										<tr>
+											<th>
+												<center>
+													<a href="{{ path('app_co_voiturage_edit_front', {'id_ch':chauffeur.idCh, 'id': co_voiturage.id}) }}">
+														<button type="button" class="btn btn-outline-success">Update</button>
+													</a>
+												</center>
+											</th>
+
+											<td>
+												<center>
+
+													<form method="post" action="{{ path('app_co_voiturage_delete2', {'id': co_voiturage.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ co_voiturage.id) }}">
+														<button type="submit" class="btn btn-outline-danger">Delete</button>
+													</form>
+
+
+												</center>
+											</td>
+
+										</tr>
+
+									</center>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+				<!-- End Portfolio Details Section -->
+
+			</main>
+			<!-- End #main -->
+
+
+			<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+				<i class="bi bi-arrow-up-short"></i>
+			</a>
+		{% endblock %}

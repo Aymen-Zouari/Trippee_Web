@@ -1,0 +1,43 @@
+{{ form_start(form) }}
+    {{ form_widget(form._token) }}
+    {{ form_row(form.type) }}
+    {{ form_row(form.prix) }}
+
+    {{ form_row(form.dateachat) }}
+    {{ form_row(form.dateexpiration) }}
+
+
+    <button class="btn">{{ button_label|default('Buy Membership') }}</button>
+
+</form>
+
+
+{# JavaScript code for updating the price #}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let typeDropdown = document.getElementById("abonnement_type");
+        if (typeDropdown) {
+            typeDropdown.addEventListener("change", updatePrice);
+        }
+    });
+    function updatePrice() {
+        let typeDropdown = document.getElementById("abonnement_type");
+        let priceInput = document.getElementById("abonnement_prix");
+        let selectedType = typeDropdown.value;
+        let price;
+        switch (selectedType) {
+            case "Gold":
+                price = 1080;
+                break;
+            case "Bronze":
+                price = 720;
+                break;
+            case "Platinum":
+                price = 400;
+                break;
+            default:
+                price = 0;
+        }
+        priceInput.value = price;
+    }
+</script>

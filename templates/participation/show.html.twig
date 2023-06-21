@@ -1,0 +1,105 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Participation
+{% endblock %}
+
+{% block body %}
+	<h1>Participation</h1>
+	<main id="main" class="main">
+
+
+		<div class="pagetitle">
+			<h1>Les Articles</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Home</a>
+					</li>
+					<li class="breadcrumb-item">Tables</li>
+					<li class="breadcrumb-item active">General</li>
+				</ol>
+
+			</nav>
+		</div>
+		<!-- End Page Title -->
+
+		<section class="section">
+			<div class="row">
+				<div class="col-lg-12">
+
+					<div class="card">
+
+						{% for message in app.flashes('notice') %}
+							<div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+								{{ message }}
+							</div>
+
+						{% endfor %}
+
+
+						{% for message in app.flashes('noticedelete') %}
+							<div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+								{{ message }}
+							</div>
+
+						{% endfor %}
+
+						<div class="card-body">
+
+							<h5 class="card-title">List Articles</h5>
+
+
+							<table class="table">
+								<tbody>
+									<tr>
+										<th>Id</th>
+										<td>{{ participation.id }}</td>
+									</tr>
+									<tr>
+										<th>Nmbr_place_part</th>
+										<td>{{ participation.nmbrPlacePart }}</td>
+									</tr>
+									<tr>
+										<th>Id_co</th>
+										<td>{{ participation.idCo }}</td>
+									</tr>
+									<tr>
+										<th>id_client</th>
+										<td>{{ participation.idClient }}</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<a href="{{ path('app_participation_edit', {'id': participation.id}) }}">
+								<button type="button" class="btn btn-outline-dark">edit</button>
+							</a>
+
+
+							<form method="post" action="{{ path('app_participation_delete', {'id': participation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ participation.id) }}">
+								<button type="submit" class="btn btn-outline-danger">Delete</button>
+							</form>
+
+
+							<br>
+							<br>
+							<a href="{{ path('app_participation_index') }}">back to list</a>
+
+
+							<!-- End Default Table Example -->
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+
+			</div>
+		</section>
+
+	</main>
+
+	{{ include('participation/_delete_form.html.twig') }}
+{% endblock %}

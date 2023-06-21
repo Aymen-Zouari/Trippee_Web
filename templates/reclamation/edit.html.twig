@@ -1,0 +1,47 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Edit Reclamation{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+    <h1>Edit Reclamation</h1>
+    
+    <table class="table">
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+        <tbody>
+            <tr>
+                <th>Type</th>
+                <td>{{ form_widget(form.type) }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ form_widget(form.commentaire) }}
+                <div class="text-danger">{{ form_errors(form.commentaire) }}</div></td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{{ form_widget(form.date_creation) }}
+                <div class="text-danger">{{ form_errors(form.date_creation) }}</div></td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ form_widget(form.image) }}</td>
+            </tr>
+            
+        </tbody>
+
+    </table>
+
+    {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <br><br>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+    
+    <br><br>
+
+    <a href="{{ path('app_reclamation_index') }}"><button type="button" class="btn btn-info">Back to list</a>
+
+    {{ form_end(form) }}
+    </main>
+{% endblock %}

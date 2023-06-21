@@ -1,0 +1,74 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+	<main id="main" class="main">
+
+
+
+        <div class="pagetitle">
+
+       
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+		<h1>Create new CoVoiturage</h1>
+		{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+		<form method="POST" action="{{ path('app_co_voiturage_new') }}" enctype="multipart/form-data">
+
+			<div class="form-group">
+
+
+				{{ form_label(form.depart, 'Departure') }}
+				{{ form_widget(form.depart, { 'attr': {'class': 'form-control'} }) }}
+				{{ form_errors(form.depart)}}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.destination, 'Destination') }}
+				{{ form_widget(form.destination, { 'attr': {'class': 'form-control'} }) }}
+				{{ form_errors(form.destination)}}
+
+			</div>
+			<div class="form-group">
+				{{ form_label(form.date_dep, 'Departure Date and Time') }}
+				{{ form_widget(form.date_dep, { 'attr': {'class': 'form-control'} }) }}
+				{{ form_errors(form.date_dep)}}
+
+			</div>
+			<div class="form-group">
+				{{ form_label(form.nmbr_place, 'Number of seats') }}
+				{{ form_widget(form.nmbr_place, { 'attr': {'class': 'form-control'} }) }}
+				{{ form_errors(form.nmbr_place)}}
+
+
+			<br>
+			<div class="form-group">
+				{{ form_label(form.cov_img, 'Image') }}
+				{{ form_widget(form.cov_img, { 'attr': {'class': 'form-control-file'} }) }}
+				{{ form_errors(form.cov_img)}}
+
+			</div>
+		
+			<br>
+			<button type="submit" class="btn btn-primary">Submit</button>
+			{{ form_end(form) }}
+		</form>
+		 </div>
+
+
+
+               </div>
+
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+
+	{% endblock %}

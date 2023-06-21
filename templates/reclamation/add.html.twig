@@ -1,0 +1,61 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+    <h1>Reclamation</h1>
+
+    <table class="table">
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ reclamation.type }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ reclamation.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ reclamation.etat }}</td>
+            </tr>
+            <tr>
+                <th>Date_creation</th>
+                <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{% if reclamation.image %}
+                    <img src="{{ asset('images/' ~ reclamation.image) }}" style="width:100px;height:100px;">
+                {% else %}
+                    No image available
+                {% endif %}</td>
+            </tr> 
+            <tr>
+            <th>Reponse</th>
+            <td>
+            {{ form_widget(form.reponse) }}
+            </td>
+            </tr>
+            <td>
+                <div class="col-sm-10"><button type="submit" class="btn btn-info">Save</button></div>
+            </td>           
+        </tbody>
+    </table>
+    
+    <br><br>
+
+    <a href="{{ path('app_reclamation_index') }}"><button type="button" class="btn btn-secondary">Back to list</button></a>
+    <a href="{{ path('app_reclamation_traite', {'id': reclamation.id}) }}"><button type="button" class="btn btn-info">Treat</button></a>
+
+
+
+{{ form_end(form) }}
+</main>
+{% endblock %}

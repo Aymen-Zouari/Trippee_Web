@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locateur index{% endblock %}
+
+{% block body %}
+    <h1>Locateur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_loc</th>
+                <th>Img</th>
+                <th>Nom_agence</th>
+                <th>Gsm</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for locateur in locateurs %}
+            <tr>
+                <td>{{ locateur.idLoc }}</td>
+                <td>{{ locateur.img }}</td>
+                <td>{{ locateur.nomAgence }}</td>
+                <td>{{ locateur.gsm }}</td>
+                <td>{{ locateur.email }}</td>
+                <td>{{ locateur.password }}</td>
+                <td>
+                    <a href="{{ path('app_locateur_show', {'id_loc': locateur.idLoc}) }}">show</a>
+                    <a href="{{ path('app_locateur_edit', {'id_loc': locateur.idLoc}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

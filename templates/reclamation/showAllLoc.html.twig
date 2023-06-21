@@ -1,0 +1,66 @@
+{% extends "indexlocateur.html.twig" %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <center><h1>Reclamation list</h1></center>
+  <br>
+
+    <table class="table table-hover">
+        <thead>
+        
+            <tr class="table-info">
+                <th></th>
+                <th></th>
+                <th scope="col">#</th>
+                <th>Type</th>
+                <th>Commentaire</th>
+                <th>Etats</th>
+                <th>Date_creation</th>
+                <th>Image</th>
+                <th style="text-align: center;padding-right: 140px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reclamation in reclamations %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{ loop.index }}</td>
+                <td>{{ reclamation.type }}</td>
+                <td>{{ reclamation.commentaire }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('Y-m-d') : '' }}</td>
+
+
+                {% if reclamation.image %}
+                <td><img src="{{ asset('images/' ~ reclamation.image) }}" style="width:100px;height:100px;"></td>
+                {% else %}
+                <td>No image available</td>
+                {% endif %}
+                <td><a href="{{ path('app_reponse_frontloc', {'id': reclamation.id,'id_loc':locateur.idLoc}) }}"<button type="button" class="btn btn-secondary">Show Responses</button></a>
+                <a href="javascript:void(0)" onclick="if(confirm('are you sure to delete this reclamation ?')){window.location='{{ path('app_reclamation_Fdeleteloc', {'id': reclamation.id, 'id_loc':locateur.idLoc }) }}';}">
+
+                                                  <button type="button" class="btn btn-outline-danger">Delete</button>
+                                              </a>
+                </td>
+                
+
+
+                </tr>
+                 {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+<a href="{{ path('app_reclamation_newFloc', {'id_loc': locateur.idLoc}) }}"><button type="button" class="btn btn-info">Create new</a>
+{% endblock %}

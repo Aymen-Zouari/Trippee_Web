@@ -1,0 +1,42 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Reponse index{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+    <h1>Reponse index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+           
+                <th>Reponse</th>
+                <th>Reclamation</th>
+               
+                <th>show</th>
+                 <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+            <tr>
+           
+                <td>{{ reponse.reponse }}</td>
+                <td>{{ reponse.getIdrec() }}</td>
+                <td>
+                    <a href="{{ path('app_reponse_show', {'id': reponse.id}) }}"><button type="button" class="btn btn-outline-dark">Show</button></a>
+                    <br></br>
+                    </td>
+                    <td>
+                    {{ include('reponse/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </main>
+{% endblock %}

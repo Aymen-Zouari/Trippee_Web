@@ -1,0 +1,60 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ reclamation.type }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ reclamation.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ reclamation.etat }}</td>
+            </tr>
+            
+            <tr>
+                <th>Date_creation</th>
+                <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{% if reclamation.image %}
+                    <img src="{{ asset('images/' ~ reclamation.image) }}" style="width:100px;height:100px;">
+                {% else %}
+                    No image available
+                {% endif %}</td>
+            </tr>
+
+            <tr>
+                                    <th>Scan this code if you like</th>
+                                    <th>
+                                        <img src="{{ qr }}" alt="QR code" style="height:20%;width:15%"/>
+                                    </th>
+                                </tr>
+                              <tr>
+                                  <center>  <th><a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}"><button type="button" class="btn btn-outline-success">Edit</button></a></th> </center>
+                                    <th>
+                                         {{ include('reclamation/_delete_form.html.twig') }}
+                                    </th>
+                                </tr>
+        </tbody>
+    </table>
+
+   
+<br><br>
+    <a href="{{ path('app_reclamation_index') }}"><button type="button" class="btn btn-secondary">Back to list</button></a>
+    </main>
+{% endblock %}

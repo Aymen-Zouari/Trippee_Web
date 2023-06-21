@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locateur{% endblock %}
+
+{% block body %}
+    <h1>Locateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id_loc</th>
+                <td>{{ locateur.idLoc }}</td>
+            </tr>
+            <tr>
+                <th>Img</th>
+                 <td><img src="{{ asset('uploads/' ~ locateur.img) }}" alt="Image du locateur"></td>
+            </tr>
+            <tr>
+                <th>Nom_agence</th>
+                <td>{{ locateur.nomAgence }}</td>
+            </tr>
+            <tr>
+                <th>Gsm</th>
+                <td>{{ locateur.gsm }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ locateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ locateur.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_locateur_index') }}">back to list</a>
+
+    <a href="{{ path('app_locateur_edit', {'id_loc': locateur.idLoc}) }}">edit</a>
+
+    {{ include('locateur/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "indexClient.html.twig" %}
+
+{% block title %}Reponse{% endblock %}
+
+{% block body %}
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <center><h1>Reponses list</h1></center>
+  <br>
+
+    <table class="table table-hover">
+        <thead>
+        
+            <tr class="table-info">
+                <th></th>
+                <th></th>
+                <th scope="col">#</th>
+                <th>Réponse</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reponses in reponses %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{ loop.index }}</td>
+                <td>{{ reponses.reponse }}</td>
+
+                {% endfor %}
+        </tbody>
+    </table>
+
+    <td><a href="{{ path('app_reclamation_front',{'id_client':client.idClient}) }}"<button type="button" class="btn btn-secondary">Back to reclamations</button></a></td>
+
+
+{% endblock %}

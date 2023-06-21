@@ -1,0 +1,67 @@
+{% extends 'indexClient.html.twig' %}
+
+{% block title %}Highscores{% endblock %}
+
+{% block body %}
+<br>
+    <br>
+    <br>
+    <main id="main">
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    
+                     <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                                <h3><i class="bi bi-wallet2">Your wallet</i> </h3>
+                                <ul>
+                                <center>    <table border="0">
+                                
+<thead>
+            <tr>
+               
+                <th>Your balance history</th>
+               <div>
+        <a href="{{ path('app_highscores_indexClient', {'order': 'asc','id_client':client.idClient}) }}"><i class="bi bi-arrow-down"><strong>Sort by Lowest</strong></i></a>
+        
+        <a href="{{ path('app_highscores_indexClient', {'order': 'desc','id_client':client.idClient}) }}"><i class="bi bi-arrow-up"><strong>Sort by Highest</strong></i></a>
+    </div>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for highscore in highscores %}
+      
+            <tr>
+                
+                <td>{{ highscore.score }}</td>
+              
+                <td>
+                    <a href="{{ path('app_highscores_show', {'idS': highscore.ids,'id_client':client.idClient}) }}"></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+               
+            </tr>
+        {% endfor %}
+
+
+                                </center>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+    </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+   
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'Login/login.html.twig' %}
+
+{% block body %}
+ <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('../Login/images/bg_3.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h3>Register to <strong>Tripee</strong></h3>
+            <br>
+           <br>
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'enctype': 'multipart/form-data', 'id': 'myform'}}) }}
+             <div class="form-group last mb-3">
+                {{ form_label(form.cin) }}
+                {{ form_widget(form.cin, {'attr': {'class': 'form-control', 'placeholder': 'CIN'}}) }}
+                {{ form_errors(form.cin)}}
+                
+              </div>
+              <div class="form-group last mb-3">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Firstname'}}) }}
+                {{ form_errors(form.nom)}}
+              
+              </div>
+         
+              <div class="form-group last mb-3">
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prenom'}}) }}
+                {{ form_errors(form.prenom)}}
+               
+              </div>
+             
+ 
+             {{ form_widget(form._token) }}
+            
+              <input type="submit" value="Confirm" id="submit" class="btn btn-block btn-primary" style="background-color: #3498db; border-color: #3498db;border-radius: 50px" onclick="return checkRecaptcha()">
+             <br>
+                                    
+              <script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></script>
+
+             <script>
+    function checkRecaptcha() {
+      if (grecaptcha.getResponse() == "") {
+        alert("Please verify that you are not a robot by completing the reCAPTCHA challenge.");
+        return false;
+      } else {
+       return true;
+       }
+  }
+
+</script>
+
+<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"  data-callback="onClick"></div>
+
+
+              
+             
+             {{ form_end(form) }}
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

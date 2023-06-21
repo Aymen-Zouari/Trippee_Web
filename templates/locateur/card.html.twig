@@ -1,0 +1,92 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+
+    <main id="main" class="main">
+
+
+
+        <div class="pagetitle">
+
+      
+    
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">Landlords list</h5>
+        <div class="search-bar" style ="position: absolute;margin-top: -4.6%;right: 4.5%">
+        <form class="search-form d-flex align-items-center" method="POST" action="{{ path ('search') }}">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+         <a href="{{ path('tricroissant5') }}"><i class="bi bi-sort-alpha-down" style ="position: absolute;margin-top: 26.5%;left: -200%;font-size: 0.8em;"> </i></a>
+        <a href="{{ path('tridesc6') }}"><i class="bi bi-sort-alpha-up" style ="position: absolute;margin-top: 20%;left: -200%;font-size: 0.8em;"></i></a>
+        <a href="{{ path('tricroissantpre7') }}"><i class="bi bi-sort-alpha-down" style ="position: absolute;margin-top: 26.5%;left: -138%;font-size: 0.8em;"> </i></a>
+        <a href="{{ path('tridescpre8') }}"><i class="bi bi-sort-alpha-up" style ="position: absolute;margin-top: 20%;left: -138%;font-size: 0.8em;"></i></a>
+    </div><!-- End Search Bar -->
+  </div><!-- End Page Title -->
+
+
+                            <!-- Default Table -->
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+                                    <th>Picture</th>
+                                    <th>Cin</th>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+
+
+                                  {%  for locateur in locateurs %} 
+
+
+
+                                    <tr>
+
+                                    <td><img class="img-profile " src="{{ asset('uploads/' ~ locateur.img) }}" style="border-radius: 50%;width: 100px; height: 100px;"></td>
+                                    <td>{{ locateur.idRole.idUser.cin }}</td>
+                                    <td>{{ locateur.idRole.idUser.nom }}</td>
+                                    <td>{{ locateur.idRole.idUser.prenom }}</td>
+                                    <td>{{ locateur.email }}</td>
+                                    <td style="color:{% if locateur.etat == 'enabled' %}green{% else %}red{% endif %};font-weight:bold;">{{ locateur.etat }}</td>
+                                    <td>
+                                    <button><a href="{{ path('disable_locateur', {'id_loc': locateur.idLoc}) }}" class="btn-danger" onclick="return confirm('Are you sure you want to disable this user?');">Disable</a></button></a>
+                                    </td>
+
+                                    </tr>
+
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                            <!-- End Default Table Example -->
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+{% endblock %}

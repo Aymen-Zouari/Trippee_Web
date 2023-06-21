@@ -1,0 +1,463 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}brand
+{% endblock %}
+
+{% block body %}
+
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<section class="section">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<div class="search-bar" style="position: absolute; margin-top: -4.6%; right: 4.5%"></div>
+								<br>
+								<center>
+									<h1>Graphique des voitures
+									</h1>
+								</center>
+								<br>
+
+
+								<canvas id="myChart"></canvas>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+		var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'polarArea',
+data: {
+labels: [
+'BMW',
+'Mercedes',
+'Audi',
+'clio',
+'porshe',
+'peugeot',
+'hamer'
+],
+datasets: [
+{
+label: 'Pourcentage %',
+data: [
+{{ BMWPercentage }},
+{{ MercedesPercentage }},
+{{ AudiPercentage }},
+{{ clioPercentage }},
+{{ porshePercentage }},
+{{ peugeotPercentage }},
+{{ hamerPercentage }}
+],
+
+backgroundColor: [
+'#ffcd56',
+'#ff6384',
+'#36a2eb',
+'#fd6b19',
+'#4bc0c0',
+'#9966ff',
+'#ff99cc'
+],
+borderColor: [
+'#ffcd56',
+'#ff6384',
+'#36a2eb',
+'#fd6b19',
+'#4bc0c0',
+'#9966ff',
+'#ff99cc'
+],
+borderWidth: 1
+}
+]
+},
+options: {
+scales: {
+yAxes: [
+{
+ticks: {
+beginAtZero: true
+}
+}
+]
+}
+
+}
+});
+	</script>
+
+
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<section class="section">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<div class="search-bar" style="position: absolute; margin-top: -4.6%; right: 4.5%"></div>
+							<br>
+								<center>
+									<h1>Graphique des roles
+									</h1>
+								</center>
+								<br>
+
+								<canvas id="rolechart"></canvas>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+		var ctx = document.getElementById('rolechart').getContext('2d');
+var rolechart = new Chart(ctx, {
+type: 'doughnut',
+data: {
+labels: [
+'Clients', 'Locateurs', 'Chauffeurs'
+],
+datasets: [
+{
+label: 'Pourcentage %',
+data: [
+{{ clientPercentage }}, {{ locateurPercentage }}, {{ chauffeurPercentage }}
+],
+backgroundColor: [
+'#ffcd56',
+'#ff6384',
+'#36a2eb',
+'#fd6b19',
+'#4bc0c0',
+'#9966ff',
+'#ff99cc'
+],
+borderColor: [
+'#ffcd56',
+'#ff6384',
+'#36a2eb',
+'#fd6b19',
+'#4bc0c0',
+'#9966ff',
+'#ff99cc'
+],
+borderWidth: 1
+}
+]
+},
+options: {
+scales: {
+yAxes: [
+{
+ticks: {
+beginAtZero: true
+}
+}
+]
+}
+
+}
+});
+	</script>
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="search-bar" style="position: absolute; margin-top: -4.6%; right: 4.5%"></div>
+                            <br>
+                            <center>
+                                <h1>Graphique des destinations</h1>
+                            </center>
+                            <br>
+
+                            <canvas id="departureChart"></canvas>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var ctxDestination = document.getElementById('departureChart').getContext('2d');
+    var destinationChart = new Chart(ctxDestination, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Aryanah',
+                'Bizerte',
+                'Beja',
+                'Tunis',
+                'Sfax',
+                'Kairouan',
+                'Jandouba',
+                'Ben Arous',
+                'Manouba',
+                'Nabeul',
+                'Gabes',
+                'Zaghouan'
+            ],
+            datasets: [{
+                label: 'Pourcentage %',
+                data: [
+{{ AryanahPercentage }},
+{{ BizertePercentage }},
+{{ BejaPercentage }},
+{{ GabesPercentage }},
+{{ TunisPercentage }},
+{{ SfaxPercentage }},
+{{ KairouanPercentage }},
+{{ JandoubaPercentage }},
+{{ Ben_ArousPercentage }},
+{{ ManoubaPercentage }},
+{{ NabeulPercentage }},
+{{ ZaghouanPercentage }}
+                ],
+                backgroundColor: [
+                    '#ffcd56',
+                    '#ff6384',
+                    '#36a2eb',
+                    '#fd6b19',
+                    '#4bc0c0',
+                    '#9966ff',
+                    '#ff99cc',
+                    '#ffd700',
+                    '#00ff7f',
+                    '#8a2be2'
+                ],
+                borderColor: [
+                    '#ffcd56',
+                    '#ff6384',
+                    '#36a2eb',
+                    '#fd6b19',
+                    '#4bc0c0',
+                    '#9966ff',
+                    '#ff99cc',
+                    '#ffd700',
+                    '#00ff7f',
+                    '#8a2be2'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<section class="section">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<div class="search-bar" style="position: absolute; margin-top: -4.6%; right: 4.5%"></div>
+							<br>
+								<center>
+									<h1>Graphique des reclamations
+									</h1>
+								</center>
+								<br>
+
+								<canvas id="rec_chart"></canvas>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+		var ctx = document.getElementById('rec_chart').getContext('2d');
+var rec_chart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: [
+'Technique', 'Eco', 'Other'
+],
+datasets: [
+{
+label: 'Pourcentage %',
+data: [
+{{ TechniquePercentage }}, {{ EcoPercentage }}, {{ OtherPercentage }},
+],
+backgroundColor: [
+'#ffcd56',
+'#ff6384',
+'#36a2eb',
+'#fd6b19',
+'#4bc0c0',
+'#9966ff',
+'#ff99cc'
+],
+borderColor: [
+'#ffcd56',
+'#ff6384',
+'#36a2eb',
+'#fd6b19',
+'#4bc0c0',
+'#9966ff',
+'#ff99cc'
+],
+borderWidth: 1
+}
+]
+},
+options: {
+scales: {
+yAxes: [
+{
+ticks: {
+beginAtZero: true
+}
+}
+]
+}
+}
+});
+	</script>
+
+
+	<main id="main" class="main">
+    <div class="pagetitle">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="search-bar" style="position: absolute; margin-top: -4.6%; right: 4.5%"></div>
+                            <br>
+                            <center>
+                                <h1>Graphique des destinations</h1>
+                            </center>
+                            <br>
+
+                            <canvas id="departureChart2"></canvas>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var ctxDestination = document.getElementById('departureChart2').getContext('2d');
+    var departureChart2 = new Chart(ctxDestination, {
+        type: 'bar',
+        data: {
+            labels: [
+                'Aryanah',
+                'Bizerte',
+                'Beja',
+                'Tunis',
+                'Sfax',
+                'Kairouan',
+                'Jandouba',
+                'Ben Arous',
+                'Manouba',
+                'Nabeul',
+                'Gabes',
+                'Zaghouan'
+            ],
+            datasets: [
+                {
+                    label: 'Pourcentage %',
+                    data: [
+                        {{ AryanahPercentage }},
+                        {{ BizertePercentage }},
+                        {{ BejaPercentage }},
+                        {{ GabesPercentage }},
+                        {{ TunisPercentage }},
+                        {{ SfaxPercentage }},
+                        {{ KairouanPercentage }},
+                        {{ JandoubaPercentage }},
+                        {{ Ben_ArousPercentage }},
+                        {{ ManoubaPercentage }},
+                        {{ NabeulPercentage }},
+                        {{ ZaghouanPercentage }}
+                    ],
+                    backgroundColor: [
+                        '#ffcd56',
+                        '#ff6384',
+                        '#36a2eb',
+                        '#fd6b19',
+                        '#4bc0c0',
+                        '#9966ff',
+                        '#ff99cc',
+                        '#ffd700',
+                        '#00ff7f',
+                        '#8a2be2'
+                    ],
+                    borderColor: [
+                        '#ffcd56',
+                        '#ff6384',
+                        '#36a2eb',
+                        '#fd6b19',
+                        '#4bc0c0',
+                        '#9966ff',
+                        '#ff99cc',
+                        '#ffd700',
+                        '#00ff7f',
+                        '#8a2be2'
+                    ],
+
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ]
+            }
+        }
+    });
+</script>
+
+
+
+
+
+{% endblock %}

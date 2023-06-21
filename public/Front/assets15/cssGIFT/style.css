@@ -1,0 +1,51 @@
+.card {
+    border-color: #eee;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.card-title {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.card-text {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+.gift-btn {
+    background-color: #6ab04c;
+    border-color: #6ab04c;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.gift-btn:hover {
+    background-color: #5ca943;
+    border-color: #5ca943;
+}
+h1 {
+    color: #333;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 4rem;
+}
+.email-icon {
+    background-image: url('path/to/email-icon.svg');
+    background-size: contain;
+    width: 64px;
+    height: 64px;
+  }
+  
+  .email-popup {
+    background-color: #F4F4F4;
+  }
+  
+  .email-confirm-button {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+  }
+  

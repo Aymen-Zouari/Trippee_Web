@@ -1,0 +1,34 @@
+{% block body %}
+	<div class="container">
+		<h1>Create new Participation</h1>
+								{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+		<form  methods: ['GET', 'POST'] action="{{ path('app_participate', {'id_client':client.idClient,'id': cov.id}) }}" enctype="multipart/form-data">
+
+
+			<h3>
+				Number of seats :
+				{{ cov.getNmbrPlace() }}
+			</h3>
+
+			{{ form_start(form) }}
+
+			<div class="form-group" hidden>
+				{{ form_label(form.id_co, 'CoVoiturage Id') }}
+				{{ form_widget(form.id_co, { 'attr': {'class': 'form-control', 'value': cov.getId() } }) }}
+				<br>
+			</div>
+			
+
+			<div class="form-group">
+				{{ form_label(form.nmbr_place_part, 'nmbr place part') }}
+				{{ form_widget(form.nmbr_place_part, { 'attr': {'class': 'form-control'} }) }}
+				<br>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<br>
+			<br>
+			{{ form_end(form) }}
+		</form>
+	</div>
+{% endblock %}

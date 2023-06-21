@@ -1,0 +1,111 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+  {{ include('coupon/_delete_form.html.twig') }}
+    <main id="main" class="main">
+
+
+
+        <div class="pagetitle">
+            <h1>Les coupons</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">General</li>
+                </ol>
+
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+
+                       
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">List Articles</h5>
+
+
+                            <!-- Default Table -->
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <th>id </th>
+                                    <td>{{ coupon.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>date_debut</th>
+                                      <td>{{coupon.date_debut |date('Y-m-d')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>date_expiration</th>
+                                      <td>{{coupon.date_experatio |date('Y-m-d')}}</td>
+                                </tr>
+                                <tr>
+                                    <th>taux</th>
+                                    <td>{{ coupon.taux }}</td>
+                                </tr>
+
+                               
+                                <tr>
+                                    <th>code_coupon</th>
+                                    <td>{{ coupon.code_coupon }}</td>
+                                </tr>
+                                <tr>
+                                    <th>nbr_utilisation</th>
+                                    <td>{{ coupon.nbr_utilisation }}</td>
+                                </tr>
+                                <tr>
+                                    <th>type</th>
+                                    <td>{{ coupon.type }}</td>
+                                </tr>
+                         
+                              
+ 
+
+                        
+                           
+
+                                </tbody>
+                            </table>
+                             <center>      <a href="{{ path('app_coupon_show',{id:coupon.id}) }}">
+                                          <th><center>      <a href="{{ path('app_coupon_edit',{id:coupon.id}) }}">
+                                           <button type="button" class="btn btn-outline-success ">Update</button></a>          </center>
+                                          
+                               
+                            <!-- End Default Table Example -->
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+{% endblock %}

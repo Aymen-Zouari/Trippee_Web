@@ -1,0 +1,71 @@
+{% extends 'indexClient.html.twig' %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <main id="main">
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('uploads/' ~ voiture.picture) }}" style="max-height: 400px">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="portfolio-info">
+                            <h3>Car information</h3>
+                            <ul>
+                                <li><strong>Registration number</strong>: {{ voiture.matricule }}</li>
+                                <br>
+                                <br>
+                                <li><strong>Brand</strong>: {{ voiture.marque }}</li>
+                                <br>
+                                <br>
+                                <li><strong>Power</strong>: {{ voiture.puissance }}</li>
+                                <br>
+                                <br>
+                                <li><strong>Price per day</strong>: {{ voiture.prixJours }}</li>
+                                <br>
+                                <br>
+                                <li><strong>Energy</strong>: {{ voiture.energie }}</li>
+                                <center>
+                                    <table border="0">
+                                        <tr>
+                                            <th><a href="{{ path('app_reservation_add', {id: voiture.id,'id_client':client.idClient}) }}">
+                                                    <button type="button" class="btn btn-outline-success">book</button>
+                                                </a>
+                                </center>
+                                </th>
+
+                                </tr>
+
+                                </center>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
+{% endblock %}

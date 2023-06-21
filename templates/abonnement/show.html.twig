@@ -1,0 +1,74 @@
+{% extends 'base2.html.twig' %}
+
+
+
+
+{% block body %}
+
+    <main id="main" class="main">
+
+
+
+
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+
+                        {% for message in app.flashes('noticedelete') %}
+                            <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">List Articles</h5>
+
+
+                            <!-- Default Table -->
+    <table class="table">
+        <tbody>
+           
+            <tr>
+                <th>Type</th>
+                <td>{{ abonnement.type }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ abonnement.prix }}</td>
+            </tr>
+            <tr>
+                <th>Dateachat</th>
+                <td>{{ abonnement.dateachat ? abonnement.dateachat|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Dateexpiration</th>
+                <td>{{ abonnement.dateexpiration ? abonnement.dateexpiration|date('Y-m-d') : '' }}</td>
+            </tr>
+             
+             <th><center>
+         <a href="{{ path('app_abonnement_index') }}">back to list</a>
+
+</center></th>
+<th><center>
+        <a href="{{ path('app_abonnement_edit', {'ida': abonnement.ida}) }}">edit</a>
+</center></th>
+</tr>
+        </tbody>
+    </table>
+
+   
+    {{ include('abonnement/_delete_form.html.twig') }}
+{% endblock %}

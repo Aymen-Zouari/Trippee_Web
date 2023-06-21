@@ -1,0 +1,47 @@
+
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+
+{% block body %}
+<br></br>
+<br></br>
+<br></br>
+
+    <center><h1>Reclamation</h1>
+
+    <table class="table">
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+        <tbody>
+            <tr>
+                <th>Type</th>
+                <td>{{ form_widget(form.type) }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ form_widget(form.commentaire) }}
+                <div class="text-danger">{{ form_errors(form.commentaire) }}</div></td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{{ form_widget(form.date_creation) }}
+                <div class="text-danger">{{ form_errors(form.date_creation) }}</div></td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ form_widget(form.image) }}</td>
+            </tr>
+            
+        </tbody>
+
+    </table>
+
+        <div class="col-sm-10">
+        <button type="submit" class="btn btn-info">Save</button>
+
+        </div>
+        {{ form_end(form) }}
+        </center>
+{% endblock %}
+

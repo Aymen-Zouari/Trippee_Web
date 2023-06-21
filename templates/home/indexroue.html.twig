@@ -1,0 +1,34 @@
+
+{% extends 'indexPromotion.html.twig' %}
+
+{% block body %}
+<div class="mainbox" id="mainbox">
+    <div class="box" id="box">
+        <link rel="stylesheet" href="{{ asset('Front/assets15/css4/style.css') }}">
+
+         <div  class="box1">
+            <span class="font span1"><h5>{{ taux[0] }}</h5><div id="type" style"display:none;" >{{type[0]}} </div></span>
+            <span class="font span2"><h5>{{ taux[1] }}</h5><div id="type"  style"display:none;" >{{type[1]}} </div></span>
+            <span class="font span3"><h5>{{ taux[2] }}</h5><div id="type"  style"display:none;" >{{type[2]}} </div></span>
+            <span class="font span4"><h5>{{ taux[3] }}</h5><div id="type"  style"display:none;" >{{type[3]}} </div></span>
+            <span class="font span5"><h5>{{ taux[4] }}</h5><div id="type"  style"display:none;" >{{type[4]}} </div></span>
+        </div>
+        <div class="box2">
+            <span class="font span1"><h5>{{ taux[5] }}</h5><div id="type"  style"display:none;" >{{type[5]}} </div></span>
+            <span class="font span2"><h5>{{ taux[6] }}</h5><div id="type"  style"display:none;" >{{type[6]}} </div></span>
+            <span class="font span3"><h5>{{ taux[7] }}</h5><div id="type"  style"display:none;" >{{type[7]}} </div></span>
+            <span class="font span4"><h5>{{ taux[8] }}</h5><div id="type"  style"display:none;" >{{type[8]}} </div></span>
+            <span class="font span5"><h5>{{ taux[9] }}</h5><div id="type"  style"display:none;" >{{type[9]}} </div></span>
+        </div>
+    </div>
+   
+    <button class="spin" onclick="spin()">spin </button>
+    <div id="result"></div>
+
+</div>
+
+<audio controls="controls" id="applause" src={{ asset('Front/assets15/audio/applause.mp3') }} type="audio/mp3"></audio>
+<audio controls="controls" id="wheel" src={{ asset('Front/assets15/audio/wheel.mp3') }} type="audio/mp3"></audio>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src={{ asset('Front/assets15/js80/main.js') }}></script>
+{% endblock %}

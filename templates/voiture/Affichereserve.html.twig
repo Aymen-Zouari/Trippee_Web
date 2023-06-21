@@ -1,0 +1,52 @@
+{% extends 'indexlocateur.html.twig' %}
+
+{% block body %}
+
+    <main id="main">
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <br>
+                <br>
+                <a href="{{ path('addVoiture',{'id_loc':locateur.idLoc}) }}">
+                    <button type="button" style="float: right;padding: 10px;" class="btn btn-outline-info">Add new car
+                    </button>
+
+                </a>
+                <br>
+                <br>
+                <br>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+                    {% for v in voiture %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('uploads/' ~ v.picture) }}"
+                                 style="max-height: 200px ; width: 100%;  object-fit: cover;">
+                            <div class="portfolio-info">
+                                <h4>{{ v.marque }}</h4>
+                                <h4>{{ v.prixJours }}</h4>
+
+                                <div class="portfolio-links">
+                                    <a href="{{ path('app_locateurvoiture_show',{'id':v.id}) }}" title="More Details"><i
+                                                class="bx bx-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if loop.index % 3 == 0 %}
+                </div>
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+    </main><!-- End #main -->
+
+    <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+{% endblock %}

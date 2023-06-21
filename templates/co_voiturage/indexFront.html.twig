@@ -1,0 +1,51 @@
+{% extends 'indexChauffeur.html.twig' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <main id="main">
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+            <br>
+            <br>
+                            <a href="{{ path('app_co_voiturage_new2', {'id_ch': chauffeur.idCh}) }}">
+                    <button type="button" style="float: right;padding: 10px;" class="btn btn-outline-info">Add new car
+                    </button>
+                <br>
+                <br>
+                <br>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+                    {% for co in co_voiturages %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('uploads/' ~ co.covImg) }}" style="max-height: 200px ; width: 100%;  object-fit: cover;">
+                            <div class="portfolio-info">
+
+                                <div class="portfolio-links">
+                                    <a href="{{ path('app_co_voiturage_show_front', {'id_ch':chauffeur.idCh, 'id': co.id}) }}" title="More Details"><i class="bx bx-link"></i></a>
+
+                                </div>
+                               </div>
+                        </div>
+                    </div>
+                    {% if loop.index % 3 == 0 %}
+                </div>
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+    </main><!-- End #main -->
+
+    <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+{% endblock %}

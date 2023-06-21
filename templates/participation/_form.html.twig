@@ -1,0 +1,43 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+	<main id="main" class="main">
+
+
+		<div class="pagetitle">
+
+
+			<section class="section">
+				<div class="row">
+					<div class="col-lg-12">
+
+						<h1>Create new Participation</h1>
+						<form method="POST" action="{{ path('app_participation_new') }}" enctype="multipart/form-data">
+							{{ form_start(form) }}
+							<div class="form-group">
+								{{ form_label(form.nmbr_place_part, 'nmbr_place_part') }}
+								{{ form_widget(form.nmbr_place_part, { 'attr': {'class': 'form-control'} }) }}
+							</div>
+							<div class="form-group">
+								{{ form_label(form.id_co, 'id_co') }}
+								{{ form_widget(form.id_co, { 'attr': {'class': 'form-control'} }) }}
+							</div>
+						 <br>
+						 <br>
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+							{{ form_end(form) }}
+						</form>
+						<a href="{{ path('app_co_voiturage_index') }}">back to list</a>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</section>
+
+</main>{% endblock %}

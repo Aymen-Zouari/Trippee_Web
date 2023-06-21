@@ -1,0 +1,90 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+    <h1>Reclamation index</h1>
+
+    <table id="results" class="table">
+
+    <div>
+            <input type="text" id="search" class="form-control" placeholder="Recherche ">
+        </div>
+        <thead>
+        <a href="{{ path('app_reclamation_new') }}"><button type="button" class="btn btn-outline-info">Create new</button></a>
+    <a href="{{ path('app_reclamation_stat') }}"><button type="button" class="btn btn-outline-info">Stat</button></a>
+    <a href="{{ path('exportpdf_rec') }}"><button type="button" class="btn btn-outline-info">PDF</button></a>
+            <tr>
+            
+                <th>Type</th>
+                <th>Commentaire</th>
+                <th>Etats</th>
+                <th>Date_creation</th>
+                <th>Image</th>
+                <th>show</th>
+                 <th>treat</th>
+                  <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+              
+                <td>{{ reclamation.type }}</td>
+                <td>{{ reclamation.commentaire }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>{{ reclamation.dateCreation ? reclamation.dateCreation|date('Y-m-d') : '' }}</td>
+               {% if reclamation.image %}
+    <td><img src="{{ asset('images/' ~ reclamation.image) }}" style="width:100px;height:100px;"></td>
+{% else %}
+    <td>No image available</td>
+{% endif %}
+
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}"><button type="button"  class="btn btn-outline-dark">Show</button></a>
+                    <br>
+                    </td>
+                    
+                    
+                    
+                    <td>
+                    <a href="{{ path('app_reclamation_add', {'id': reclamation.id}) }}"><button type="button" class="btn btn-outline-info">Treat</button></a>
+                    <br>
+                    </td>
+                    <td>
+                    {{ include('reclamation/_delete_form.html.twig') }}
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                var value = $(this).val();
+                $.ajax({
+                    url: "{{ path('searchRec') }}",
+                    type: "POST",
+                    data: {value: value},
+                    success: function(data) {
+
+                        $('#results').html(data);
+                        $('#results').css('width', '100%');
+                        $('#results').css('position', 'static');
+                    }
+                });
+            });
+        });
+    </script>
+    </main>
+{% endblock %}

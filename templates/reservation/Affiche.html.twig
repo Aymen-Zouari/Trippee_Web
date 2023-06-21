@@ -1,0 +1,123 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+
+
+    <main id="main" class="main">
+
+
+        <div class="pagetitle">
+
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show"
+                                 role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+
+                        {% for message in app.flashes('noticedelete') %}
+                            <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show"
+                                 role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">car list</h5>
+                  
+
+
+
+
+
+
+                            <!-- Default Table -->
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+                                    <th>bumber registration</th>
+                                    <th>brand</th>
+                                    <th>power</th>
+                                    <th>energy</th>
+                                    <th>picture</th>
+                                    <th>Start date</th>
+                                    <th>End date</th>
+
+
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                <tr {% for r in reservation %} >
+
+
+                                    <td>{{ r.idVoiture.matricule }}</td>
+                                    <td>{{ r.idVoiture.marque }}</td>
+                                    <td>{{ r.idVoiture.puissance }}</td>
+                                    <td>{{ r.idVoiture.energie }}</td>
+                                    <td><img class="img-profile " src="{{ asset('uploads/' ~ r.idVoiture.picture) }}"
+                                             style="max-height: 80px"></td>
+                                    <td>{{ r.dateDebut |date('Y-m-d') }}</td>
+                                    <td>{{ r.dateFin |date('Y-m-d') }}</td>
+                                    <td><a href="{{ path('modifC2',{id:r.id}) }}">
+                                            <button type="button" class="btn btn-outline-success">Update</button>
+                                        </a></td>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           onclick="if(confirm('are you sure to delete this Reservation ?')){window.location='{{ path('app_DeleteReservation', {'id': r.id }) }}';}">
+
+                                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                                        </a>
+                                    </td>
+                                </tr {% endfor %}>
+
+                                </tbody>
+                            </table>
+
+                        <center>  {{ knp_pagination_render(reservation, 'bootstrap_4_pagination.html.twig') }}</center>
+                            <!-- End Default Table Example -->
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+{% endblock %}
+{% block flashbag %}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            {% if type == 'error' %}
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: '{{ message|raw }}'
+                    });
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

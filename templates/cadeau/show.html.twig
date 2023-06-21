@@ -1,0 +1,111 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+
+    <main id="main" class="main">
+
+
+
+        <div class="pagetitle">
+            <h1>Les Articles</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">General</li>
+                </ol>
+
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+
+                        {% for message in app.flashes('noticedelete') %}
+                            <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">List Articles</h5>
+
+
+                            <!-- Default Table -->
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <th>id </th>
+                                    <td>{{ cadeau.idcadeau }}</td>
+                                </tr>
+                                <tr>
+                                    <th>nom_cadeay</th>
+                                      <td>{{cadeau.nom_cadeay }}</td>
+                                </tr>
+                                <tr>
+                                    <th>reccurence</th>
+                                      <td>{{cadeau.reccurence }}</td>
+                                </tr>
+                                <tr>
+                                    <th>description</th>
+                                    <td>{{ cadeau.description }}</td>
+                                </tr>
+
+                               
+                                <tr>
+                                    <th>valeur</th>
+                                    <td>{{ cadeau.valeur }}</td>
+                                </tr>
+                               
+                          
+
+                                </tbody>
+                            </table>
+                           
+                               <center>      <a href="{{ path('app_cadeau_show',{idcadeau:cadeau.idcadeau}) }}">
+                                          <center>      <a href="{{ path('app_cadeau_edit',{idcadeau:cadeau.idcadeau}) }}">
+                                           <button type="button" class="btn btn-outline-success ">Update</button></a>          </center>
+                               
+                             <center>
+
+                                     
+
+
+                              
+                         
+                            <!-- End Default Table Example -->
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+{% endblock %}

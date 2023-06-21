@@ -1,0 +1,18 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}New CoVoiturage
+{% endblock %}
+
+{% block body %}
+	<centre>
+
+		<div style="text-align: center;">
+
+		<h1>Create new CoVoiturage</h1>
+
+		{{ include('co_voiturage/_form.html.twig') }}
+
+		<a href="{{ path('app_co_voiturage_index') }}">back to list</a>
+        </div>
+	</centre>
+{% endblock %}

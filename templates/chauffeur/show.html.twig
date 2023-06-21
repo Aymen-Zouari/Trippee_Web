@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chauffeur{% endblock %}
+
+{% block body %}
+    <h1>Chauffeur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdCh</th>
+                <td>{{ chauffeur.idCh }}</td>
+            </tr>
+            <tr>
+                <th>Img</th>
+              <td><img src="{{ asset('uploads/' ~ chauffeur.img) }}" alt="Image du chauffeur"></td>
+
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ chauffeur.idRole.idUser.nom }}</td>
+            </tr>
+            <tr>
+                <th>NumPermis</th>
+                <td>{{ chauffeur.numPermis }}</td>
+            </tr>
+            <tr>
+                <th>Gsm</th>
+                <td>{{ chauffeur.gsm }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ chauffeur.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ chauffeur.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chauffeur_index') }}">back to list</a>
+
+    <a href="{{ path('app_chauffeur_edit', {'id_ch': chauffeur.idCh}) }}">edit</a>
+
+    {{ include('chauffeur/_delete_form.html.twig') }}
+{% endblock %}

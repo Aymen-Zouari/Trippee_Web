@@ -1,0 +1,60 @@
+{% extends 'indexClient.html.twig' %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <center><h1>Reservation list</h1></center>
+
+        <a href="{{ path('exportpdf') }}">
+            <button type="button" style="padding: 10px;" class="btn btn-outline-info">Export to PDF
+            </button>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th scope="col">Registration number</th>
+            <th scope="col">Brand</th>
+            <th scope="col">power</th>
+            <th scope="col">Energy</th>
+            <th scope="col">picture</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th>update</th>
+            <th>delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr  {%  for r in reservation %} >
+
+
+            <td>{{ r.idVoiture.matricule }}</td>
+            <td>{{ r.idVoiture.marque }}</td>
+            <td>{{ r.idVoiture.puissance }}</td>
+            <td>{{ r.idVoiture.energie }}</td>
+            <td><img class="img-profile " src="{{ asset('uploads/' ~ r.idVoiture.picture) }}" style="max-height: 80px"></td>
+            <td>{{r.dateDebut |date('Y-m-d')}}</td>
+            <td>{{r.dateFin |date('Y-m-d')}}</td>
+
+
+            <td> <a href="{{ path('modifC',{id:r.id}) }}">
+                    <button type="button" class="btn btn-outline-success">Update</button></a>    </td>
+
+            <td>
+                <a href="javascript:void(0)" onclick="if(confirm('are you sure to delete this Reservation ?')){window.location='{{ path('app_DeleteReservation2', {'id': r.id }) }}';}">
+
+                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                </a>
+            </td>
+        </tr {%  endfor %}>
+
+        </tbody>
+    </table>
+   {{ knp_pagination_render(reservation, 'bootstrap_4_pagination.html.twig') }}
+
+{% endblock %}

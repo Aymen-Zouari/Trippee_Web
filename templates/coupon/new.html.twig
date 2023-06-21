@@ -1,0 +1,76 @@
+
+{% extends 'base2.html.twig' %}
+{% block title %}New Coupon{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+      margin: 1em auto;
+      max-width: 500px;
+      width: 95%;
+      font: 18px/1.5 sans-serif;
+      text-align: center; /* Add this line to center the content */
+    }
+    
+</style>
+
+<div class="example-wrapper">
+    <h1>Create new Coupon</h1>
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_start(form ,{'attr':{'class':'form-horizontal'}}) }}
+    <table>
+        <tr>
+            <td>{{ form_label(form.date_debut,"date_deb ") }}</td>
+            <td>{{ form_widget(form.date_debut) }}</td>
+            <td>{{ form_errors(form.date_debut) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.date_experatio,"date_exper ") }}</td>
+            <td>{{ form_widget(form.date_experatio) }}</td>
+            <td>{{ form_errors(form.date_experatio) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.taux,"taux reduction") }}</td>
+            <td>{{ form_widget(form.taux) }}</td>
+            <td>{{ form_errors(form.taux) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.code_coupon,"code coupon") }}</td>
+            <td>{{ form_widget(form.code_coupon) }}</td>
+            <td>{{ form_errors(form.code_coupon) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.nbr_utilisation," nbr utilisation") }}</td>
+            <td>{{ form_widget(form.nbr_utilisation) }}</td>
+            <td>{{ form_errors(form.nbr_utilisation) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.type," type") }}</td>
+            <td>{{ form_widget(form.type) }}</td>
+            <td>{{ form_errors(form.type) }}</td>
+        </tr>
+    </table>
+    
+    {{ form_widget(form.generate_code) }}
+
+{{ include('coupon/_form.html.twig') }}
+    <a href="{{ path('app_coupon_index') }}">back to list</a>
+</div>
+{% endblock %}
+{% block javascripts %}
+   
+    <script>
+        function generateCode() {
+            var codeCoupon = document.getElementById("coupon1_code_coupon");
+            var length = 8;
+            var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var code = "";
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                code += charset.charAt(Math.floor(Math.random() * n));
+            }
+            codeCoupon.value = code;
+        }
+    </script>
+{% endblock %}

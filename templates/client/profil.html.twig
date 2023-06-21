@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+
+{% block header %}
+
+
+ <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="{{path('profilcl', {'id_client' : client.idClient})}}">Tripee</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{path('profilcl', {'id_client' : client.idClient})}}">Home</a></li>
+            <li><a class="nav-link scrollto active" href="{{ path('app_co_voiturage_index_client', {'id_client' : client.idClient }) }}">Car pool participation</a></li>
+            <li><a class="nav-link scrollto active" href="{{ path('app_voitureaffichClient', {'id_client' : client.idClient}) }}">Car</a></li>
+            <li><a class="nav-link scrollto active" href="{{ path('app_reclamation_front', {'id_client' : client.idClient }) }}">Reclamation</a></li>
+          
+             <li class="dropdown"><a href=""><span>Earn Discount</span> <i class="bi bi-chevron-down"></i></a>
+                         <ul>
+                             <li>  
+                             <a href="{{ path('app_roue', {'id_client' : client.idClient }) }}">Wheel</a>
+                             </li>
+                             <li>
+                             <a href="{{ path('appllycoupon',{'id_client':client.idClient}) }}">Apply Coupon</a>
+                             </li>
+                            
+           
+ </ul>
+                    <li class="dropdown"><a href=""><span>Membership</span> <i class="bi bi-chevron-down"></i></a>
+                         <ul>
+                             <li>  
+                             <a href="{{ path('app_abonnement_newC',{'id_client':client.idClient}) }}">Buy New membership</a>
+                             </li>
+                             <li>
+                             <a href="{{ path('unity_game', {'id_client' : client.idClient }) }}">Earn money</a>
+                             </li>
+                            
+                <li>
+                <a href="{{ path('app_highscores_indexClient',{'id_client':client.idClient}) }}"><i class="bi bi-wallet2">Wallet</i></a>
+                </li>
+ </ul>
+        
+
+
+          <li class="scrollto" style="margin-left: 20px" >
+      
+  
+                <img class="" src="{{ asset('uploads/' ~ client.img) }}" style="border-radius: 50%;width: 45px; height: 45px;">
+                
+                    <span style="font-size: 15px;color: #222222;margin-bottom: 2000px;">
+                {{ client.idRole.idUser.nom }}
+                {{ client.idRole.idUser.prenom }}
+   <a  style="display: inline-block; margin-left: -30px;" class="nav-link scrollto active" href="{{ path('app_client_edit', {'id_client': client.idClient}) }}"><i class="bi bi-pencil-square" style="font-size: 1em;"></i></a>
+                </span>
+    
+        </li>
+ 
+          <li>
+      <a class="nav-link scrollto active" href="{{ path('login') }}">  <i class="bi bi-box-arrow-right" style="font-size: 1.9em;"></i></a>
+      </li>
+        </ul>
+      
+       
+      </nav><!-- .navbar -->
+ 
+    </div>
+    
+  </header><!-- End Header -->
+
+
+{% endblock %}

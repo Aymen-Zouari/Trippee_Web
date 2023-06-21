@@ -1,0 +1,44 @@
+{% extends 'indexPromotion.html.twig' %}
+
+{% block body %}
+    <h1>Liste des cadeaux</h1>
+    <br><br><br><br> 
+    <div class="row">
+  
+        {% for cadeau in cadeaux %}
+            <div class="col-md-5 mb-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cadeau.nom_cadeay }}</h5>
+                        <p class="card-text">{{ cadeau.description }}</p>
+                        <p class="card-text"><strong>Valeur :</strong> {{ cadeau.valeur }}DT</p>
+                      <a class="btn btn-primary btn-lg btn-block gift-btn" href="{{ path('gift', {'idcadeau': cadeau.idcadeau,'id_client':client.idClient}) }}" role="button" id="gift-button" onclick="sendEmail()">Get your Gift</a>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <link rel="stylesheet" href="{{ asset('Front/assets15/cssGIFT/style.css') }}">
+   {% block javascripts %}
+   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+      function sendEmail() {
+  Swal.fire({
+    icon: 'success',
+    title: 'Email Sent!',
+    text: 'Check your email.',
+    confirmButtonText: 'OK',
+    customClass: {
+      icon: 'email-icon',
+      popup: 'email-popup',
+      confirmButton: 'email-confirm-button'
+    }
+  });
+}
+
+    </script>
+{% endblock %}
+
+{% endblock %}

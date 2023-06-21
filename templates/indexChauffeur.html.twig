@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Trippie </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    {% block css %}
+        <link href="{{ asset('Front/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('Front/assets/css/style.css') }}" rel="stylesheet">
+    {% endblock %}
+
+    {% block javascript %}
+    <script src="{{ asset('Front/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('Front/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('Front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('Front/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('Front/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('Front/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('Front/assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('Front/assets/js/main.js') }}"></script>
+    {% endblock %}
+</head>
+
+<body>
+{% block header %}
+
+
+ <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="{{path('profilch', {'id_ch' : chauffeur.idCh})}}">Tripee</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{path('profilch', {'id_ch' : chauffeur.idCh})}}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{{ path('app_co_voiturage_index_fornt', {'id_ch' : chauffeur.idCh}) }}">Car pool</a></li>
+          <li><a class="nav-link scrollto active" href="{{ path('app_reclamation_frontCh', {'id_ch' : chauffeur.idCh }) }}">Reclamation</a></li>
+        
+          <li class="scrollto" style="margin-left: 20px" >
+      
+  
+                <img class="" src="{{ asset('uploads/' ~ chauffeur.img) }}" style="border-radius: 50%;width: 45px; height: 45px;">
+                
+                    <span style="font-size: 15px;color: #222222;margin-bottom: 2000px;">
+                {{ chauffeur.idRole.idUser.nom }}
+                {{ chauffeur.idRole.idUser.prenom }}
+ <a  style="display: inline-block; margin-left: -30px;" class="nav-link scrollto active" href="{{ path('app_chauffeur_edit', {'id_ch': chauffeur.idCh}) }}"><i class="bi bi-pencil-square" style="font-size: 1em;"></i></a>
+                </span>
+    
+        </li>
+  <li>
+      <a class="nav-link scrollto active" href="{{ path('login') }}">  <i class="bi bi-box-arrow-right" style="font-size: 1.9em;"></i></a>
+      </li>
+        </ul>
+      
+       
+      </nav><!-- .navbar -->
+ 
+    </div>
+    
+  </header><!-- End Header -->
+
+
+{% endblock %}
+{% block body %}
+
+
+
+{% endblock %}
+
+</body>
+
+</html>
